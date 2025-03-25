@@ -7,7 +7,11 @@
     `npm install -g @angular/cli`
 
 -   Create New Angular Proj
-    `ng new 655-project-frontend`
+    `ng new 655-final-project-frontend`
+
+    - Stylesheet Format: Sass (SCSS)
+    - Enable Server-Side Rnedering SSR and Static Site Gneration: No
+    
 
 -   Install other dependencies
     `npm install rxjs`
