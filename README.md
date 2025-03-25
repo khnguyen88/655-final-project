@@ -11,7 +11,8 @@
 
     - Stylesheet Format: Sass (SCSS)
     - Enable Server-Side Rnedering SSR and Static Site Gneration: No
-    
+
+-   Move Into Angular Project Folder: ```cd 655-final-project-frontend```
 
 -   Install other dependencies
     `npm install rxjs`
