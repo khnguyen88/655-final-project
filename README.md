@@ -1,5 +1,7 @@
 # 655-final-project-frontend
 
+# Personal Setup Process
+
 -   Download latest NodeJS or Change Node Version w/ NVM
 -   Install Angular
     `npm install -g @angular/cli`
