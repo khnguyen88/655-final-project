@@ -1,6 +1,6 @@
-# 655-final-project-frontend
+# 655 Final Project
 
-# Personal Setup Process
+## Personal Setup Process - FRONTEND
 
 -   Download latest NodeJS or Change Node Version w/ NVM
 
@@ -8,7 +8,7 @@
     `npm install -g @angular/cli`
 
 -   Create New Angular Proj
-    `ng new 655-final-project-frontend`
+    `ng new 655-final-project-frontend --no-standalone`
 
     -   Stylesheet Format: Sass (SCSS)
     -   Enable Server-Side Rnedering SSR and Static Site Gneration: No
@@ -18,6 +18,8 @@
 -   Install other dependencies
     `npm install rxjs`
     `npm install primeng @primeng/themes`
+    `npm i primeflex`
+    `npm install @angular/animations`
 
 -   Create Images Service
     `ng generate service service/images`
@@ -39,3 +41,13 @@
 -   Add the "/private" path in the .gitignore file.
 
 -   Find templates of the files required for the "private" folder in the "template" folder. Copy those files in your local "private" folder and fill-in the appropiate details.
+
+-   Need to configure angular project to use prime-ng theme properly to show proper color theme. It's a whole process. Follow the instructions from this guide:
+
+    -   https://primeng.org/theming
+
+-   We will also need to install Tailwind for angular to apply the theme properly to show proper fonts. Follow the instructions from this guide:
+    -   https://tailwindcss.com/docs/installation/framework-guides/angular
+    -   https://primeng.org/tailwind
+
+## Backend Setup

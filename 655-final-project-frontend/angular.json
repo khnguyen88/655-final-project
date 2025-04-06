@@ -91,7 +91,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "~primeng/resources/themes/lara-light-blue/theme.css",
+              "~primeng/resources/themes/lara-light-blue/theme.css",
+              "~primeng/resources/themes/lara-light-blue/theme.css"
             ],
             "scripts": []
           }
