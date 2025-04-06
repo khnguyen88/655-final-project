@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
+<!-- <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
@@ -322,7 +322,7 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
@@ -332,5 +332,22 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
+<p-tabs value="0">
+  <p-tablist>
+    <p-tab value="0">Upload File</p-tab>
+    <p-tab value="1">Gallery</p-tab>
+  </p-tablist>
+  <p-tabpanels>
+    <p-tabpanel value="0">
+      <section>
+        <app-file-upload-form></app-file-upload-form>
+      </section>
+    </p-tabpanel>
+    <p-tabpanel value="1">
+      <section>
+        <app-results-history-gallery></app-results-history-gallery>
+      </section>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
 <router-outlet />
