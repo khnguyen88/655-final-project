@@ -11,10 +11,10 @@ export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), provideAnimationsAsync(),
         providePrimeNG({
             theme: {
-            preset: Material,
-            options: {
-              darkModeSelector: '.my-app-dark'
-            }
+              preset: Material,
+              options: {
+                darkModeSelector: '.my-app-dark'
+              }
             }
         })]
 };

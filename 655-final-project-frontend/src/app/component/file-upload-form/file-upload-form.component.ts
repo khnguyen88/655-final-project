@@ -36,7 +36,7 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
   }
 
   onSubmit(urlString: string) {
-    alert(urlString);
+
 
     if (!this.checkExtension(urlString)) {
       alert("Invalid file, please try another with the correct image extension!");
@@ -51,8 +51,10 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
 
   checkExtension(urlString: string) {
     let startOfExtIndex: number = urlString.lastIndexOf(".");
-    let urlStringExt: string = urlString.slice(startOfExtIndex);
-    alert(urlStringExt);
+    if (startOfExtIndex == -1 || startOfExtIndex == urlString.length) {
+      return false;
+    }
+    let urlStringExt: string = urlString.slice(startOfExtIndex + 1);
     return this.acceptedFileExtensions.includes(urlStringExt);
   }
 
