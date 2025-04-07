@@ -1,3 +1,13 @@
-<p>file-upload-form works!</p>
+<h2 class="header">Provide Image URL for Color Evaluation!</h2>
+
+<section class="field">
+    <label for="inputUrl">Image URL:</label>
+    <input type="text" id="inputUrl"pInputText [(ngModel)]="inputUrlValue" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+</section>
+<section class="field">
+    <p-button label="Submit" (onClick)="onSubmit(inputUrlValue)" severity="secondary" /> 
+</section>
+<!-- NOTE: IGNORE FOR NOW. TOO MUCH TIME WASTED ON DEALING WITH FORM DATA, SENDING FILE TO CLOUD RUN FUNCTION, AND CORS. WILL SOLVE IN THE FUTURE -->
+<!-- <p>file-upload-form works!</p>
 <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" />
-<p-button label="Upload" (onClick)="fu.upload()" severity="secondary" />
+<p-button label="Upload" (onClick)="fu.upload()" severity="secondary" /> -->

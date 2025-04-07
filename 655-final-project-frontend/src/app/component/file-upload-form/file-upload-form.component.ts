@@ -1,29 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { FileUpload, FileUploadEvent } from 'primeng/fileupload';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { last, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { SubmitFormService } from '../../service/submit-form.service';
 
-interface UploadEvent {
-    originalEvent: Event;
-    files: File[];
-}
 
 @Component({
   selector: 'app-file-upload-form',
-  imports: [FileUpload, ToastModule, ButtonModule],
+  imports: [FileUpload, ToastModule, ButtonModule, InputTextModule, FormsModule],
   providers: [MessageService],
   templateUrl: './file-upload-form.component.html',
-  styleUrl: './file-upload-form.component.scss'
+  styleUrl: './file-upload-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class FileUploadFormComponent {
-  urlPath: string = 'https://final-project-655-put-image-into-storage-bucket-770833528905.us-central1.run.app'
+export class FileUploadFormComponent implements OnInit, OnDestroy{
+  subscriptions: Subscription = new Subscription();
+  inputUrlValue: string = "";
+  acceptedFileExtensions: string[] = ["jpg", "png", "tiff", "gif"];
+  isValid: boolean = false;
   
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private submitFormService: SubmitFormService, private router: Router, private cd: ChangeDetectorRef) { }
 
-  onUpload(event: FileUploadEvent) {
-    alert(JSON.stringify(event));
-    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
+  ngOnInit(): void {
+    this.clearForm();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  onSubmit(urlString: string) {
+    alert(urlString);
+
+    if (!this.checkExtension(urlString)) {
+      alert("Invalid file, please try another with the correct image extension!");
+    }
+
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.inputUrlValue = "";
+  }
+
+  checkExtension(urlString: string) {
+    let startOfExtIndex: number = urlString.lastIndexOf(".");
+    let urlStringExt: string = urlString.slice(startOfExtIndex);
+    alert(urlStringExt);
+    return this.acceptedFileExtensions.includes(urlStringExt);
+  }
+
+  submitImageUrl(urlString: string) {
+    this.subscriptions.add(this.submitFormService.submitForm(urlString).subscribe(
+      results => {
+        if (results || results.length > 0) {
+          alert("Url Path has been successfully submitted");
+        }
+        else {
+          alert("Url Path was not accepted, please try again!")
+        }
+      }
+    ));
   }
 }
