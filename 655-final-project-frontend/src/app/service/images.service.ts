@@ -12,7 +12,8 @@ export class ImagesService {
   }
 
   getSearchResultsHistory(): Observable<any>{
-    return this.http.get(environment.getSearchResultsHistoryPathName)
+    return this.http.get(environment.getSearchResultsHistoryJsonURLPath
+)
       .pipe(
         catchError(this.handleError)
       );
