@@ -27,7 +27,7 @@ export class ResultsHistoryGalleryComponent implements OnInit, OnDestroy{
     this.subscriptions.add(this.imageService.getSearchResultsHistory().subscribe(
       results => {
         this.imageRequestHistoryData = results;
-        alert(JSON.stringify(this.imageRequestHistoryData));
+        // alert(JSON.stringify(this.imageRequestHistoryData));
         this.cd.detectChanges();
       }
     ));

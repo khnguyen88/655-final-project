@@ -1,3 +1,33 @@
-img{
-    max-width: 500px;
+.colors{
+    padding-bottom: 2em;
+}
+
+.color{
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-6 {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.col-6 > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.col-6 img {
+    display: block;
+    margin: auto;
+    width: 50%;
+    max-width: fit-content;
+    height: auto;
 }

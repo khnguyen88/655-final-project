@@ -1,30 +1,32 @@
 @if(imageRequestHistoryData){
 <div class="grid">
-    <div class="col-3">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">Images</div>
+    <div class="col-6">
+        <div class="text-center p-3 border-round-sm font-bold text-xl bg-primary-400">Images</div>
     </div>
-    <div class="col">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">Image Properties (Vision API)</div>
+    <div class="col-6">
+        <div class="text-center p-3 border-round-sm font-bold text-xl bg-primary-400">Image Properties</div>
     </div>
 </div>
-<div class="grid body">
+<div class="grid">
     @for (imageData of imageRequestHistoryData; track imageData) {
-    <div class="col-3">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">
+    <div class="col-6">
+        <div class="text-center p-3 border-round-sm font-bold bg-primary-200">
             <img [src]="imageData.imageUrl" />
         </div>
     </div>
-    <div class="col">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">
+    <div class="col-6">
+        <div class="text-center p-3 border-round-sm font-bold colors bg-primary-200">
             @if (imageData.visionApiResults?.responses?.[0]?.imagePropertiesAnnotation?.dominantColors?.colors) {
-            @for (colorData of imageData.visionApiResults.responses[0].imagePropertiesAnnotation.dominantColors.colors;
-            track
-            colorData) {
-            <div><span>Colors:</span> R:{{colorData.color.red}} | G:{{colorData.color.green}} |
-                B:{{colorData.color.blue}}</div>
-            <div><span>Dominant Score:</span> {{colorData.score}} </div>
-            <div><span>Pixel Fraction:</span> {{colorData.pixelFraction}} </div>
-            }
+                @for (colorData of imageData.visionApiResults.responses[0].imagePropertiesAnnotation.dominantColors.colors;
+                track
+                colorData) {
+                <div class="text-center color">
+                    <div><span>Colors:</span> R:{{colorData.color.red}} | G:{{colorData.color.green}} |
+                        B:{{colorData.color.blue}}</div>
+                    <div><span>Dominant Score:</span> {{colorData.score}} </div>
+                    <div><span>Pixel Fraction:</span> {{colorData.pixelFraction}} </div>
+                </div>
+                }
             } @else {
             <div>No color information available.</div>
             }
