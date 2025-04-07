@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { last, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { SubmitFormService } from '../../service/submit-form.service';
+import { CustomFormData } from '../../interfaces/model';
 
 
 @Component({
@@ -18,6 +19,8 @@ import { SubmitFormService } from '../../service/submit-form.service';
   styleUrl: './file-upload-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+  
+
 
 export class FileUploadFormComponent implements OnInit, OnDestroy{
   subscriptions: Subscription = new Subscription();
@@ -36,10 +39,15 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
   }
 
   onSubmit(urlString: string) {
-
+    const formData: CustomFormData = {
+      urlString: urlString
+    }
 
     if (!this.checkExtension(urlString)) {
       alert("Invalid file, please try another with the correct image extension!");
+    }
+    else {
+      this.submitImageUrl(formData);
     }
 
     this.clearForm();
@@ -58,8 +66,8 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
     return this.acceptedFileExtensions.includes(urlStringExt);
   }
 
-  submitImageUrl(urlString: string) {
-    this.subscriptions.add(this.submitFormService.submitForm(urlString).subscribe(
+  submitImageUrl(formData: CustomFormData) {
+    this.subscriptions.add(this.submitFormService.submitForm(formData).subscribe(
       results => {
         if (results || results.length > 0) {
           alert("Url Path has been successfully submitted");

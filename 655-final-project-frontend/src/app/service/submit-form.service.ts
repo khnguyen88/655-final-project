@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from '../../../private/environment';
+import { CustomFormData } from '../interfaces/model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class SubmitFormService {
   constructor(private http: HttpClient) { 
   }
 
-  submitForm(urlString: string): Observable<any>{
-    return this.http.post(environment.submitImageForColorEvaluationURLPath, urlString)
+  submitForm(formData: CustomFormData): Observable<any>{
+    return this.http.post(environment.submitImageForColorEvaluationURLPath, formData)
       .pipe(
         catchError(this.handleError)
       );
