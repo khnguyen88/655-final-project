@@ -18,7 +18,7 @@
 -   Install other dependencies
     `npm install rxjs`
     `npm install primeng @primeng/themes`
-    `npm i primeflex`
+    `npm install primeflex --save`
     `npm install @angular/animations`
 
 -   Create Images Service
@@ -47,7 +47,12 @@
     -   https://primeng.org/theming
 
 -   We will also need to install Tailwind for angular to apply the theme properly to show proper fonts. Follow the instructions from this guide:
+
     -   https://tailwindcss.com/docs/installation/framework-guides/angular
     -   https://primeng.org/tailwind
+
+-   Need to import specific primeng and primeflex related styles into the angular project's styles.scss file:
+    `@import "tailwindcss";`
+    `@import 'primeflex/primeflex.scss';`
 
 ## Backend Setup
