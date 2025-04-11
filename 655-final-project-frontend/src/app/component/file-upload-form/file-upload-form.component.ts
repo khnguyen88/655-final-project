@@ -71,6 +71,7 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
       results => {
         // alert(JSON.stringify(results));
         alert("SUCCESS! " + results.message);
+        window.location.reload(); //Quick and dirty workaround to refresh page as gallery and form components loads at the same time due to the parent component, tabview.
       }
     ));
   }

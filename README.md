@@ -1,5 +1,17 @@
 # 655 Final Project
 
+## Cloned Project Setup Process - FRONTEND
+
+-   Copy project folder from git repository
+-   Change directory to the 655-final-project-frontend subfolder
+-   Run `npm install`
+-   Rename the subfolder, **private_template** to **private**, this should make your folder ignored by git
+-   In the **private** folder, in the **environment.ts** file update the URL paths to the correct cloud services endpoints that you created using the **Backend Tutorial**
+-   Run `ng serve` (to test application)
+-   Run `ng build` (to build your production files for deployment). The files will be stored in the `dist` folder
+-   Open up your project on your Google Cloud Console
+-
+
 ## Personal Setup Process - FRONTEND
 
 -   Download latest NodeJS or Change Node Version w/ NVM
@@ -54,5 +66,26 @@
 -   Need to import specific primeng and primeflex related styles into the angular project's styles.scss file:
     `@import "tailwindcss";`
     `@import 'primeflex/primeflex.scss';`
+
+-   WRITE AND ITERATE THROUGH CODE
+
+-   Update Environment file with the correct url paths to the cloud application or services endpoints
+
+-   Run `ng build`
+
+-   If you get a build error, Adjust Angular JSON to Increase Budget for Production (Situational. Set to Whats Needed)
+
+    -   https://stackoverflow.com/questions/78093540/angular-build-warning-bundle-initial-exceeded-maximum-budget-i-know-how-to-re
+
+        ```
+        "configurations": {
+                    "production": {
+                    "budgets": [
+                        {
+                        "type": "initial",
+                        "maximumWarning": "2000kb",
+                        "maximumError": "5600kb"
+                        },
+        ```
 
 ## Backend Setup
