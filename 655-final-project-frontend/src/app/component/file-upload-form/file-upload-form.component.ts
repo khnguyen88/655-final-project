@@ -69,12 +69,8 @@ export class FileUploadFormComponent implements OnInit, OnDestroy{
   submitImageUrl(formData: CustomFormData) {
     this.subscriptions.add(this.submitFormService.submitForm(formData).subscribe(
       results => {
-        if (results || results.length > 0) {
-          alert("Url Path has been successfully submitted");
-        }
-        else {
-          alert("Url Path was not accepted, please try again!")
-        }
+        // alert(JSON.stringify(results));
+        alert("SUCCESS! " + results.message);
       }
     ));
   }
