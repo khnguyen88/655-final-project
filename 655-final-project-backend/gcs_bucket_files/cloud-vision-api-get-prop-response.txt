@@ -1,0 +1,130 @@
+//Obtained from running request on this page: https://cloud.google.com/vision/docs/detecting-properties
+
+{
+  "responses": [
+    {
+      "imagePropertiesAnnotation": {
+        "dominantColors": {
+          "colors": [
+            {
+              "color": {
+                "red": 242,
+                "green": 177,
+                "blue": 133
+              },
+              "score": 0.15389307,
+              "pixelFraction": 0.013533333
+            },
+            {
+              "color": {
+                "red": 203,
+                "green": 205,
+                "blue": 213
+              },
+              "score": 0.10318407,
+              "pixelFraction": 0.19266666
+            },
+            {
+              "color": {
+                "red": 114,
+                "green": 77,
+                "blue": 65
+              },
+              "score": 0.0956145,
+              "pixelFraction": 0.034133334
+            },
+            {
+              "color": {
+                "red": 225,
+                "green": 58,
+                "blue": 65
+              },
+              "score": 0.009635375,
+              "pixelFraction": 0.014266667
+            },
+            {
+              "color": {
+                "red": 248,
+                "green": 124,
+                "blue": 129
+              },
+              "score": 0.0073306584,
+              "pixelFraction": 0.0057333335
+            },
+            {
+              "color": {
+                "red": 150,
+                "green": 107,
+                "blue": 93
+              },
+              "score": 0.086609796,
+              "pixelFraction": 0.019666666
+            },
+            {
+              "color": {
+                "red": 233,
+                "green": 185,
+                "blue": 159
+              },
+              "score": 0.0715451,
+              "pixelFraction": 0.0122
+            },
+            {
+              "color": {
+                "red": 221,
+                "green": 221,
+                "blue": 226
+              },
+              "score": 0.050195403,
+              "pixelFraction": 0.202
+            },
+            {
+              "color": {
+                "red": 188,
+                "green": 145,
+                "blue": 124
+              },
+              "score": 0.031715393,
+              "pixelFraction": 0.0069333334
+            },
+            {
+              "color": {
+                "red": 105,
+                "green": 77,
+                "blue": 75
+              },
+              "score": 0.030601813,
+              "pixelFraction": 0.013866667
+            }
+          ]
+        }
+      },
+      "cropHintsAnnotation": {
+        "cropHints": [
+          {
+            "boundingPoly": {
+              "vertices": [
+                {
+                  "y": 259
+                },
+                {
+                  "x": 2549,
+                  "y": 259
+                },
+                {
+                  "x": 2549,
+                  "y": 1699
+                },
+                {
+                  "y": 1699
+                }
+              ]
+            },
+            "confidence": 0.885,
+            "importanceFraction": 1
+          }
+        ]
+      }
+    }
+  ]
+}
