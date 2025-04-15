@@ -1,0 +1,102 @@
+CREATE REACT PROJECT
+
+BUILD REACT PROJECT
+
+CREATE <app.yaml> FILE (NEEDED!!! TO DEPLOY APP ENGINE)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	runtime: nodejs22
+
+	instance_class: F2
+
+	env_variables: 
+	  BUCKET_NAME: "react-app-bucket-0"
+
+	handlers:
+	- url: /
+	  static_files: dist/index.html
+	  upload: dist/index.html
+
+	- url: /
+	  static_dir: sist/
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	  
+	=> NOTES:
+			==> FOR INSTANCE CLASS, CHOOSE THE ONE THAT FITS YOUR NEED, HERE:
+				==> https://cloud.google.com/appengine/docs/standard
+				
+			==> 
+			
+			==> BY DEFAULT: url should be "/"
+			==> DUE TO THE APP'S PACKAGE.JSON PROPERTY: "homepage"
+				==> my REACT APP PROJECT HOMEPAGE VALUE IS:   "homepage": "/tic-tac-toe-658"
+
+CREATE AN APP ENGINE APPLICATION:
+>> us-east-1 (MAYBE FREE?)
+
+CREATE CLOUD BUCKET:
+>> react-app-bucket-0
+>> standard
+>> us-east-1 (FREE TIER)
+
+UPLOAD THE "build" FOLDER INTO THE CLOUD BUCKET (TOP DIRECTORY)
+
+UPLOAD THE "app-yaml" FILE INTO THE CLOUD BUCKET (TOP DIRECTORY)
+
+OPEN CLOUD SHELL
+ => UNDER ASSIGN ROLES 
+		==> CLICK THE DROPDOWN. UNDER CURRENTLY USED
+		==> SELECT THE ROLE: "Storage Legacy Bucket Owner"
+
+AUTHORIZE CLOUD SHELL IF PROMPTED
+
+CREATE PROJECT DIRECTORY (TEMPORARY STAGING FOR DEPLOYMENT) IN CLOUD SHELL ENVIRONMENT:
+>> mkdir react-app-test-tic-tac-toe
+
+SYNC THE DATA FROM THE BUCKET INTO THE CLOULD SHELL DIRECTORY : 
+>> gsutil rsync -r gs://react-app-bucket-0 ./react-app-test-tic-tac-toe
+
+CHANGE DIRECTORY INTO THE PROJECT FOLDER:
+>> cd react-app-test-tic-tac-toe
+
+DEPLOY CLOUD APPLICATION INSIDE THE PROJECT FOLDER
+>> gcloud app deploy
+
+SELECT REGION YOU WANT YOUR APP ENGINE APPLICATION TO BE DEPLOY
+>> us-east-1 (MAYBE FREE?)
+
+CONFIRM YOU WANT TO DEPLOY YOUR APP:
+>> verify you want to continue, enter Y.
+------------------------------------------------------------
+------------------------------------------------------------
+NOTE: IF YOUR ARE RUNNING INTO A CLOUD BUILD ISSUE. GO BACK INTO CLOUD STORAGE CONSOLE, SELECT THE BUCKET YOU JUST CREATED, AND HIT THE THREE BUTTON.
+
+CLICK ON THE BUTTON 'ADD PRINCIPAL'
+
+ADD THE APP ENGINE SERVICE ACCOUNT, AND GRANT IT "Storage Legacy Bucket Owner" ROLE
+ => UNDER ADD PRINCIPALS
+		==> TYPE IN "@" TO PULL DOWN ALL THE SERVICE ACCOUNT
+			>> @
+		
+		==> SELECT THE SERVICE ACCOUNT ASSOCIATED WITH GOOGLE CLOUD APP ENGINE
+			>> service-148962830110@gcp-gae-service.iam.gserviceaccount.com
+			
+REDEPLOY CLOUD APPLICATION INSIDE THE PROJECT FOLDER (IN CLOUD SHELL)
+>> gcloud app deploy
+------------------------------------------------------------
+------------------------------------------------------------
+
+BROWSE APP ENGINE
+>> gcloud app browse
+
+
+OBTAIN DEPLOYED WEB APPLICATION LINK
+>> https://dummy-test-project-449519.ue.r.appspot.com
+
+------------------------------------------------------------
+------------------------------------------------------------
+NOTE: IF YOU RECIEVED A 503: SERVICE UNAVAILABLE, INCLUDE YOUR APP HOMEPAGE PATH AT THE END OF THE LINK (IF YOU HAVE ONE)
+>> https://dummy-test-project-449519.ue.r.appspot.com/tic-tac-toe-658
+------------------------------------------------------------
+------------------------------------------------------------
+
+SEARCH UP GOOGLE CLOUD'S SERVICE - LOG EXPLORER TO SEE ALL TRAFFIC STATUS LOGS
+

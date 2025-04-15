@@ -1,0 +1,6 @@
+functions-framework==3.*
+google-cloud-vision
+requests
+pillow
+protobuf
+jsonify
